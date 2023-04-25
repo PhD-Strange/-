@@ -4,8 +4,10 @@
 using namespace std;
 
 int main() {
+
+
     ofstream out; // for recording
-    out.open("hello.txt");
+    out.open("output.txt");
     if (out.is_open())
         out << "Hello World?" << endl;
     out.close();
