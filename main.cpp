@@ -1,7 +1,20 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 using namespace std;
+
+class Node
+{
+private:
+    int m; // time
+    int n; // space // u{m, n} = u(mt, nh)
+public:
+    Node(int m, int n); // constructor
+    int GetTime() const; // get time-position
+    int GetSpace() const; // get space-position
+};
+
 
 int main() {
     string line;
