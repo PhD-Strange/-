@@ -12,19 +12,18 @@ int SPACE_SPLIT_H = 0.03;
 class Node
 {
 private:
-    pair<int, int> u; // u{m, n} = u(mt, nh)
+    int m; // u{m, n} = u(mT, nH)
+    int n;
 public:
     Node(pair<int, int> u); // constructor
 };
 
 Node::Node(pair<int, int> u) {
-    do  
-        if (u.second < 0) {
-            u.second = u.second + SPACE_SCALE_N;
-        } else if (u.second > SPACE_SCALE_N * SPACE_SPLIT_H) {
-            u.second = u.second - SPACE_SCALE_N;
-        }
-    while (u.first > TIME_SCALE_M * TIME_SPLIT_T);
+    if (u.second < 0) {
+        u.second = u.second + SPACE_SCALE_N;
+    } else if (u.second > SPACE_SCALE_N * SPACE_SPLIT_H) {
+        u.second = u.second - SPACE_SCALE_N;
+    }
 };
 
 int main() {
