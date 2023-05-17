@@ -15,13 +15,17 @@ double roll(vector<double>& v, unsigned int n) {
 }
 
 int main() {
-    vector<double> inits; // initial conditions
+    vector<double> inits(SPACE_SCALE_N); // initial conditions
     double velocity; // velocity = c > 0
     double a; // shift
 
+    for (int i = 0; i < SPACE_SCALE_N; i++) {
+        inits.at(i) = 0.5 * velocity * pow(cosh(sqrt(velocity)*(i*SPACE_SPLIT_H - a)/2), -2);
+    }
+
     vector<vector<double>> solution;
 
-    
+
 
     string line;
     ifstream in("input.txt");
