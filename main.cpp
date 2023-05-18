@@ -15,7 +15,7 @@ double roll(vector<double> v, unsigned int n) {
 }
 
 bool check_stability(double max) {
-    return TIME_SPLIT_T/SPACE_SPLIT_H * abs(-2 * max + pow(SPACE_SPLIT_H, -2)) <= 2/pow(3, 1.5);
+    return TIME_SPLIT_T/SPACE_SPLIT_H * abs(-2 * max + pow(SPACE_SPLIT_H, -2)) < 2/pow(3, 1.5);
 }
 
 int main() {
@@ -34,14 +34,12 @@ int main() {
     u.at(0) = inits;
 
     for (int n = 0; n < SPACE_SCALE_N; n++) {
-        u[1][n] = u[0][n] - TIME_SPLIT_T/SPACE_SPLIT_H *(roll(u[0], n + 1) + u[0][n] + roll(u[0], n - 1))*(roll(u[0], n + 1) - roll(u[0], n - 1)) - 
-            TIME_SPLIT_T/(2*pow(SPACE_SPLIT_H, 3)) * (roll(u[0], n + 2) - 2*roll(u[0], n + 1) + 2*roll(u[0], n - 1) - roll(u[0], n - 2));
+        u[1][n] = u[0][n] - TIME_SPLIT_T/SPACE_SPLIT_H *(roll(u[0], n + 1) + u[0][n] + roll(u[0], n - 1))*(roll(u[0], n + 1) - roll(u[0], n - 1)) - TIME_SPLIT_T/(2*pow(SPACE_SPLIT_H, 3)) * (roll(u[0], n + 2) - 2*roll(u[0], n + 1) + 2*roll(u[0], n - 1) - roll(u[0], n - 2));
     }
 
     for (int m = 1; m < TIME_SCALE_M; m++) {
         for (int n = 0; n < SPACE_SCALE_N; n++) {
-            u[m + 1][n] = u[m - 1][n] - 2 * TIME_SPLIT_T/SPACE_SPLIT_H *(roll(u[m], n + 1) + u[m][n] + roll(u[m], n - 1))*(roll(u[m], n + 1) - roll(u[m], n - 1)) - 
-                TIME_SPLIT_T * pow(SPACE_SPLIT_H, -3) * (roll(u[m], n + 2) - 2*roll(u[m], n + 1) + 2*roll(u[m], n - 1) - roll(u[m], n - 2));
+            u[m + 1][n] = u[m - 1][n] - 2 * TIME_SPLIT_T/SPACE_SPLIT_H *(roll(u[m], n + 1) + u[m][n] + roll(u[m], n - 1))*(roll(u[m], n + 1) - roll(u[m], n - 1)) - TIME_SPLIT_T/pow(SPACE_SPLIT_H, 3) * (roll(u[m], n + 2) - 2*roll(u[m], n + 1) + 2*roll(u[m], n - 1) - roll(u[m], n - 2));
         }
     }
 
