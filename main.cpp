@@ -7,10 +7,10 @@ using namespace std;
 
 const int TIME_SCALE_M = 100;
 const int SPACE_SCALE_N = 100;
-const double TIME_SPLIT_T = 0.01;
-const double SPACE_SPLIT_H = 0.03;
+const double TIME_SPLIT_T = 0.00001;
+const double SPACE_SPLIT_H = 0.12;
 
-double roll(vector<double> v, unsigned int n) {
+double roll(vector<double>& v, unsigned int n) {
     return v[n % v.size()];
 }
 
@@ -20,8 +20,10 @@ bool check_stability(double max) {
 
 int main() {
     vector<double> inits(SPACE_SCALE_N); // initial conditions
-    double velocity; // velocity = c > 0
+    double velocity = 0.01; // velocity = c > 0
     double a = 0; // shift
+
+    cout << check_stability(velocity/2) << endl;
 
     for (int i = 0; i < SPACE_SCALE_N; i++) {
         inits.at(i) = 0.5 * velocity * pow(cosh(sqrt(velocity)*(i*SPACE_SPLIT_H - a)/2), -2);
