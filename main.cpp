@@ -56,8 +56,21 @@ int main() {
 
     ofstream out; // for recording
     out.open("output.txt");
-    if (out.is_open())
-        out << "Hello World?" << endl;
+    if (out.is_open()) {
+        out << "{";
+        for (int m = 0; m < TIME_SCALE_M - 1; m++) {
+            out << "{";
+            for (int n = 0; n < SPACE_SCALE_N - 1; n++) {
+                out << u[m][n] << ", ";
+            }
+            out << u[m][SPACE_SCALE_N - 1] << "}, ";
+        }
+        out << "{ ";
+        for (int n = 0; n < SPACE_SCALE_N - 1; n++) {
+            out << u[TIME_SCALE_M - 1][n] << ", ";
+        }
+        out << u[TIME_SCALE_M - 1][SPACE_SCALE_N - 1] << "}}";
+    }
     out.close();
 
     return 0;
