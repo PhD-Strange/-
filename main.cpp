@@ -57,6 +57,7 @@ int main() {
     ofstream out; // for recording
     out.open("output.txt");
     if (out.is_open()) {
+        out << TIME_SPLIT_T << " " << SPACE_SPLIT_H << " " << TIME_SCALE_M*TIME_SPLIT_T << " " << SPACE_SCALE_N*SPACE_SPLIT_H << endl;
         out << "{";
         for (int m = 0; m < TIME_SCALE_M - 1; m++) {
             out << "{";
