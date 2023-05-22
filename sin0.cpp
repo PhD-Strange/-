@@ -102,7 +102,7 @@ int main() {
     outsin0.close();
 
     ofstream outsin1; // for recording
-    outsin1.open("sin0 1000*1000 SPLIT 0.00005*0.15.txt"); // record sin-1 1000*1000 solution
+    outsin1.open("sin1 1000*1000 SPLIT 0.00005*0.15.txt"); // record sin-1 1000*1000 solution
     if (outsin1.is_open()) {
         outsin1 << TIME_SPLIT_T_1 << " " << SPACE_SPLIT_H_1 << " " << TIME_SCALE_M_0*TIME_SPLIT_T_1 << " " << SPACE_SCALE_N_0*SPACE_SPLIT_H_1 << endl;
         outsin1 << "{";
@@ -122,7 +122,7 @@ int main() {
     outsin1.close();
 
     ofstream outsin2; // for recording
-    outsin2.open("sin0 1000*1000 SPLIT 0.0001*0.3.txt"); // record sin-2 1000*1000 solution
+    outsin2.open("sin2 1000*1000 SPLIT 0.0001*0.3.txt"); // record sin-2 1000*1000 solution
     if (outsin2.is_open()) {
         outsin2 << TIME_SPLIT_T_2 << " " << SPACE_SPLIT_H_2 << " " << TIME_SCALE_M_0*TIME_SPLIT_T_2 << " " << SPACE_SCALE_N_0*SPACE_SPLIT_H_2 << endl;
         outsin2 << "{";
